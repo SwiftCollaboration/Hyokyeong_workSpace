@@ -14,7 +14,7 @@ struct Share {
     
     //******* IP 쓴 채로 push 안하도록 주의!! <<<<<<<<<< 보안!!!!!!!
     func url(_ fileName: String) -> String{
-        let url = "http://192.168.219.102:8080/bebeProject/\(fileName)"
+        let url = "http://<#macIP#>:8080/bebeProject/\(fileName)"
         return url
     }
     

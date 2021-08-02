@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" name="SubColor"/>
                                 <state key="normal" title="카카오"/>
                                 <connections>
-                                    <action selector="btnKakao:" destination="rfd-Qn-dve" eventType="touchUpInside" id="tYq-0e-vbF"/>
+                                    <action selector="btnKakao:" destination="rfd-Qn-dve" eventType="touchUpInside" id="ODH-QF-wbV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LD-nX-5j2">
@@ -50,7 +50,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnLogin:" destination="rfd-Qn-dve" eventType="touchUpInside" id="9eg-fl-ier"/>
+                                    <action selector="btnLogin:" destination="rfd-Qn-dve" eventType="touchUpInside" id="JfJ-6M-1xb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osb-Iu-Tnm">
@@ -73,7 +73,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnSignUp:" destination="rfd-Qn-dve" eventType="touchUpInside" id="MOS-Tv-Qfo"/>
+                                    <action selector="btnSignUp:" destination="rfd-Qn-dve" eventType="touchUpInside" id="zlj-GU-bMh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AV2-ge-BdL">
@@ -81,12 +81,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="SubColor"/>
                                 <state key="normal" title="네이버"/>
+                                <connections>
+                                    <action selector="btnNaver:" destination="rfd-Qn-dve" eventType="touchUpInside" id="biW-HU-sjT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eho-Op-tY5">
                                 <rect key="frame" x="274" y="591" width="100" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="SubColor"/>
                                 <state key="normal" title="구글"/>
+                                <connections>
+                                    <action selector="btnGoogle:" destination="rfd-Qn-dve" eventType="touchUpInside" id="eU3-9J-S9N"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KtJ-0z-hyw"/>
@@ -249,7 +255,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="tfActionBabyage:" destination="MSm-3t-AZ1" eventType="editingDidBegin" id="6oV-7u-5ls"/>
+                                    <action selector="tfChoiceBabyage:" destination="MSm-3t-AZ1" eventType="editingDidBegin" id="IU6-Fu-IxT"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-WW-z9T">
@@ -272,7 +278,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnSignUp:" destination="MSm-3t-AZ1" eventType="touchUpInside" id="XB8-hQ-wLo"/>
+                                    <action selector="btnSignUp:" destination="MSm-3t-AZ1" eventType="touchUpInside" id="LIi-CC-fGw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzT-NA-TLT">
@@ -304,12 +310,12 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="Urj-uE-SrQ"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="lblBabyage" destination="2RQ-uH-d6e" id="JIo-lj-6sh"/>
-                        <outlet property="lblNickname" destination="VhL-0i-w5m" id="JvX-wd-AQk"/>
-                        <outlet property="lblPhone" destination="kzT-NA-TLT" id="RLs-dw-Y3z"/>
-                        <outlet property="tfBabyage" destination="FVv-10-kYK" id="5yB-UL-iOG"/>
-                        <outlet property="tfNickname" destination="z5C-aY-Pre" id="vAS-Iy-Ace"/>
-                        <outlet property="tfPhone" destination="gbF-mg-Dd4" id="t9M-Y8-d1A"/>
+                        <outlet property="lblBabyage" destination="2RQ-uH-d6e" id="bqh-OQ-fm4"/>
+                        <outlet property="lblNickname" destination="VhL-0i-w5m" id="EPb-Tf-8eY"/>
+                        <outlet property="lblPhone" destination="kzT-NA-TLT" id="0af-u4-N6p"/>
+                        <outlet property="tfBabyage" destination="FVv-10-kYK" id="bma-qz-Zed"/>
+                        <outlet property="tfNickname" destination="z5C-aY-Pre" id="c4E-Xn-nqX"/>
+                        <outlet property="tfPhone" destination="gbF-mg-Dd4" id="btg-4t-em1"/>
                         <segue destination="8O8-Af-rFY" kind="show" identifier="sgSignUpSuccess" id="ehh-3l-FaH"/>
                     </connections>
                 </viewController>
@@ -356,7 +362,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호(8자리 이상, 숫자 문자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfF-rw-Jev" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호(8~20자, 숫자 문자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfF-rw-Jev" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="40" y="229" width="290" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -382,7 +388,7 @@
                                 <color key="tintColor" name="MainColor"/>
                                 <state key="normal" image="eye.slash.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="btnShowPassword:" destination="HZ0-lE-oT7" eventType="touchUpInside" id="uKW-BB-68T"/>
+                                    <action selector="btnPasswordAction:" destination="HZ0-lE-oT7" eventType="touchUpInside" id="KtQ-u7-fyO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j41-gF-iDO">
@@ -405,7 +411,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnSignUp:" destination="HZ0-lE-oT7" eventType="touchUpInside" id="A5y-I3-rqW"/>
+                                    <action selector="btnNext:" destination="HZ0-lE-oT7" eventType="touchUpInside" id="zPe-h1-bRw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -416,11 +422,11 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="Skl-nG-IAi"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnPasswordShow" destination="b8b-2B-Bly" id="Thd-VM-M8l"/>
-                        <outlet property="lblEmail" destination="xYA-pB-l9e" id="qzf-38-0np"/>
-                        <outlet property="lblPassword" destination="Bpu-f3-bNK" id="lsu-Lz-ztq"/>
-                        <outlet property="tfEmail" destination="fw0-gI-qyR" id="37c-Gb-WJr"/>
-                        <outlet property="tfPassword" destination="bfF-rw-Jev" id="Xrg-Dy-OgN"/>
+                        <outlet property="btnShowPassword" destination="b8b-2B-Bly" id="eq5-qU-EEr"/>
+                        <outlet property="lblEmail" destination="xYA-pB-l9e" id="HX7-oO-Tf6"/>
+                        <outlet property="lblPassword" destination="Bpu-f3-bNK" id="4Z2-kE-QEh"/>
+                        <outlet property="tfEmail" destination="fw0-gI-qyR" id="mQl-Vk-yvG"/>
+                        <outlet property="tfPassword" destination="bfF-rw-Jev" id="WAe-Z7-Q9t"/>
                         <segue destination="MSm-3t-AZ1" kind="show" identifier="sgSignUp2" id="ijw-gx-UGX"/>
                     </connections>
                 </viewController>
@@ -429,6 +435,29 @@
             <point key="canvasLocation" x="1548" y="812"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="A0x-ha-oWB">
+            <size key="intrinsicContentSize" width="257" height="28"/>
+        </designable>
+        <designable name="FVv-10-kYK">
+            <size key="intrinsicContentSize" width="117.5" height="29.5"/>
+        </designable>
+        <designable name="bfF-rw-Jev">
+            <size key="intrinsicContentSize" width="236" height="28"/>
+        </designable>
+        <designable name="fw0-gI-qyR">
+            <size key="intrinsicContentSize" width="56" height="29.5"/>
+        </designable>
+        <designable name="gbF-mg-Dd4">
+            <size key="intrinsicContentSize" width="253.5" height="29.5"/>
+        </designable>
+        <designable name="x19-3l-o2B">
+            <size key="intrinsicContentSize" width="56" height="29.5"/>
+        </designable>
+        <designable name="z5C-aY-Pre">
+            <size key="intrinsicContentSize" width="155.5" height="29.5"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="ehh-3l-FaH"/>
         <segue reference="ijw-gx-UGX"/>
@@ -437,10 +466,10 @@
         <image name="chevron.right.2" catalog="system" width="128" height="105"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <namedColor name="MainColor">
-            <color red="0.38823529411764707" green="0.63137254901960782" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.63099998235702515" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubColor">
-            <color red="0.8666666666666667" green="0.95294117647058818" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.86699998378753662" green="0.95300000905990601" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -5,9 +5,9 @@
 //  Created by hyogang on 2021/08/02.
 //
 
-import Foundation
+import UIKit
 
-extension UIView {
+extension UIView{
     
     @IBInspectable var borderWidth: CGFloat {
         set {
