@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import KakaoSDKCommon
+import NaverThirdPartyLogin
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        KakaoSDKCommon.initSDK(appKey: "e70a1d7d9e16fe0fd159f47c596efae8")
+        
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+        // 네이버 앱으로 인증하는 방식을 활성화
+        instance?.isNaverAppOauthEnable = true
+        // SafariViewController에서 인증하는 방식을 활성화
+        instance?.isInAppOauthEnable = true
+        // 인증 화면을 iPhone의 세로 모드에서만 사용하기
+        instance?.isOnlyPortraitSupportedInIphone()
+        // 네이버 아이디로 로그인하기 설정
+        // 애플리케이션을 등록할 때 입력한 URL Scheme
+        instance?.serviceUrlScheme = kServiceAppUrlScheme
+        // 애플리케이션 등록 후 발급받은 클라이언트 아이디
+        instance?.consumerKey = kConsumerKey
+        // 애플리케이션 등록 후 발급받은 클라이언트 시크릿
+        instance?.consumerSecret = kConsumerSecret
+        // 애플리케이션 이름
+        instance?.appName = kServiceAppName
+        
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error != nil || user == nil {
+              // Show the app's signed-out state.
+            } else {
+              // Show the app's signed-in state.
+            }
+        }
+        
         return true
     }
 
@@ -29,6 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
+        var handled: Bool
+
+        handled = GIDSignIn.sharedInstance.handle(url)
+        if handled {
+            return true
+        }
+        return true
     }
 
 
