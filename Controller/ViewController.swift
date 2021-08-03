@@ -26,6 +26,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // 자동로그인
+        if let userEmail = UserDefaults.standard.string(forKey: "email"){
+            if let userNickname = UserDefaults.standard.string(forKey: "nickname"){
+                Share.userEmail = userEmail
+                Share.userNickName = userNickname
+                self.performSegue(withIdentifier: "sgSocialLogin", sender: self)
+            }
+        }else{
+            return
+        }
+        
     }
     
     

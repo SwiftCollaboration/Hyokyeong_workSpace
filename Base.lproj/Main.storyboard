@@ -223,11 +223,70 @@
                         <outlet property="tfEmail" destination="x19-3l-o2B" id="yoY-uK-wYq"/>
                         <outlet property="tfPassword" destination="A0x-ha-oWB" id="Odw-po-y9c"/>
                         <segue destination="8O8-Af-rFY" kind="show" identifier="sgLoginSuccess" id="954-Qz-QP9"/>
+                        <segue destination="Z2F-Mp-zCk" kind="show" identifier="sgFindPasasword" id="gN4-Ia-E2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2D-z8-wAt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="-173"/>
+            <point key="canvasLocation" x="1850.7246376811595" y="-165.40178571428569"/>
+        </scene>
+        <!--Find Password View Controller-->
+        <scene sceneID="xEc-fc-Mnz">
+            <objects>
+                <viewController id="Z2F-Mp-zCk" customClass="FindPasswordViewController" customModule="BebeLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HJQ-j7-MuK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B9M-9V-642" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="40" y="128" width="334" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NA-IC-hbW">
+                                <rect key="frame" x="40" y="229" width="334" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="MainColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="비밀번호 찾기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="MainColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnFindPassword:" destination="Z2F-Mp-zCk" eventType="touchUpInside" id="LYh-P4-Rym"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyB-Tr-O8r">
+                                <rect key="frame" x="40" y="188" width="334" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ixm-1S-752"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UMv-HE-77F"/>
+                    <connections>
+                        <outlet property="lblNotice" destination="oyB-Tr-O8r" id="UEg-RA-piv"/>
+                        <outlet property="tfEmail" destination="B9M-9V-642" id="bRR-RY-GDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZX-nh-n4p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2730" y="-423"/>
         </scene>
         <!--회원가입-->
         <scene sceneID="qOI-IK-Pzi">
@@ -331,8 +390,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="메인화면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqM-Mi-s6q">
-                                <rect key="frame" x="178" y="277" width="59" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqM-Mi-s6q">
+                                <rect key="frame" x="178" y="251" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCb-4b-yJh">
+                                <rect key="frame" x="178" y="371" width="59" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -437,29 +503,32 @@
     </scenes>
     <designables>
         <designable name="A0x-ha-oWB">
-            <size key="intrinsicContentSize" width="77.5" height="32"/>
+            <size key="intrinsicContentSize" width="73.5" height="28"/>
+        </designable>
+        <designable name="B9M-9V-642">
+            <size key="intrinsicContentSize" width="56" height="29.5"/>
         </designable>
         <designable name="FVv-10-kYK">
-            <size key="intrinsicContentSize" width="121.5" height="33.5"/>
+            <size key="intrinsicContentSize" width="117.5" height="29.5"/>
         </designable>
         <designable name="bfF-rw-Jev">
-            <size key="intrinsicContentSize" width="240" height="32"/>
+            <size key="intrinsicContentSize" width="236" height="28"/>
         </designable>
         <designable name="fw0-gI-qyR">
-            <size key="intrinsicContentSize" width="60" height="33.5"/>
+            <size key="intrinsicContentSize" width="56" height="29.5"/>
         </designable>
         <designable name="gbF-mg-Dd4">
-            <size key="intrinsicContentSize" width="257.5" height="33.5"/>
+            <size key="intrinsicContentSize" width="253.5" height="29.5"/>
         </designable>
         <designable name="x19-3l-o2B">
-            <size key="intrinsicContentSize" width="60" height="33.5"/>
+            <size key="intrinsicContentSize" width="56" height="29.5"/>
         </designable>
         <designable name="z5C-aY-Pre">
-            <size key="intrinsicContentSize" width="159.5" height="33.5"/>
+            <size key="intrinsicContentSize" width="155.5" height="29.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="954-Qz-QP9"/>
+        <segue reference="57u-3B-rWE"/>
         <segue reference="B4j-X1-sxv"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -26,10 +26,9 @@ class LoginViewController: UIViewController {
     let hidePassword = UIImage(systemName: "eye.slash.fill")
     var isShowPassword = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +54,7 @@ class LoginViewController: UIViewController {
             isShowPassword = true
         }
     }
-    
+
     // login button click event
     @IBAction func btnLogin(_ sender: UIButton) {
         if checkEmptyText(){
@@ -67,6 +66,7 @@ class LoginViewController: UIViewController {
     
     // findPassword button click event
     @IBAction func btnFindPassword(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "sgFindPasasword", sender: self)
     }
     
     
@@ -110,6 +110,8 @@ extension LoginViewController: LoginModelProtocol {
         }else{
             Share.userEmail = dbInputText[0]
             Share.userNickName = nickname
+            UserDefaults.standard.set(dbInputText[0], forKey: "email")
+            UserDefaults.standard.set(nickname, forKey: "nickname")
 
             self.performSegue(withIdentifier: "sgLoginSuccess", sender: self)
         }
