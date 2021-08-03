@@ -1,41 +1,78 @@
 //
-//  SignUpNicknameViewController.swift
+//  MyInfoViewController.swift
 //  BebeLogin
 //
-//  Created by hyogang on 2021/08/02.
+//  Created by hyogang on 2021/08/03.
 //
 
 import UIKit
 import TextFieldEffects
 
-class SignUpNicknameViewController: UIViewController {
+class MyInfoLocalUserViewController: UIViewController {
+
+    let email = Share.userEmail
     
-    var email = ""
-    var password = ""
+    @IBOutlet weak var lblMyNickname: UILabel!
     
-    // textfield
+    // textField
+    @IBOutlet weak var tfEmail: HoshiTextField!
+    @IBOutlet weak var tfPassword: HoshiTextField!
     @IBOutlet weak var tfNickname: HoshiTextField!
     @IBOutlet weak var tfPhone: HoshiTextField!
     @IBOutlet weak var tfBabyage: HoshiTextField!
-    lazy var tfInput : [HoshiTextField] = [tfNickname, tfPhone, tfBabyage]
-    let textFieldArr = ["닉네임", "휴대폰 번호", "아기 나이"]
+    lazy var tfInput : [HoshiTextField] = [tfPassword, tfNickname, tfPhone]
+    let textFieldArr = ["비밀번호", "닉네임", "휴대폰 번호"]
     var dbInputText : [String] = []
-
+    
     // label
+    @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var lblNickname: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
-    @IBOutlet weak var lblBabyage: UILabel!
-    lazy var lblNotice : [UILabel] = [lblNickname, lblPhone, lblBabyage]
+    lazy var lblNotice : [UILabel] = [lblPassword, lblNickname, lblPhone]
+
+    // password button
+    @IBOutlet weak var btnShowPassword: UIButton!
+    let showPassword = UIImage(systemName: "eye.fill")
+    let hidePassword = UIImage(systemName: "eye.slash.fill")
+    var isShowPassword = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        let model = ModifyMyinfoModel()
+        model.selectMyinfo(email: Share.userEmail)
+        model.delegate = self
+        
         view.endEditing(true)
+        
         setBlankInLabel()
+        
+        // setting hide password button
+        btnShowPassword.setImage(hidePassword, for: .normal)
+        tfPassword.isSecureTextEntry = true
+        isShowPassword = false
+        
+        // setting label and textField
+        lblMyNickname.text = Share.userNickName
+        lblMyNickname.sizeToFit()
+
+        tfEmail.text = email
+    }
+    
+    // password button click event
+    @IBAction func btnPasswordAction(_ sender: UIButton) {
+        if isShowPassword{
+            btnShowPassword.setImage(hidePassword, for: .normal)
+            tfPassword.isSecureTextEntry = true
+            isShowPassword = false
+        }else{
+            btnShowPassword.setImage(showPassword, for: .normal)
+            tfPassword.isSecureTextEntry = false
+            isShowPassword = true
+        }
     }
     
     // 아기 나이 선택
@@ -54,6 +91,7 @@ class SignUpNicknameViewController: UIViewController {
 
         present(babyage, animated: true, completion: nil)
     }
+    
     // 아기 나이 선택
     func choiceBabyage(babyage:Int){
         switch babyage {
@@ -72,15 +110,13 @@ class SignUpNicknameViewController: UIViewController {
         }
     }
     
-    
-    
-    // 회원가입 button click event
-    @IBAction func btnSignUp(_ sender: UIButton) {
-        if checkEmptyText(){ // 1. 빈 값 체크
-            if checkRegularExpression(){ // 2. 정규식 확인
-                let duplicateCheckModel = SignUpDuplicateCheckModel()
-                duplicateCheckModel.isVaildItem(item: "nickname", content: dbInputText[0])
-                duplicateCheckModel.delegate = self // 3. nickname 중복 확인
+    // update myinfo button click event
+    @IBAction func btnUpdateMyInfo(_ sender: UIButton) {
+        if checkEmptyText(){
+            if checkRegularExpression(){
+                let model = SignUpDuplicateCheckModel()
+                model.isVaildItem(item: "nickname", content: dbInputText[1])
+                model.delegate = self
             }
         }
     }
@@ -109,6 +145,15 @@ class SignUpNicknameViewController: UIViewController {
         for i in 0..<dbInputText.count{
             switch i {
             case 0:
+                if regularExpression.isValidPassword(password: dbInputText[i]){
+                    continue
+                }else{
+                    setBlankInLabel()
+                    lblNotice[i].text = "비밀번호는 8-20자 이내의 문자와 숫자를 포함하여 입력해주세요."
+                    tfInput[i].becomeFirstResponder()
+                    return false
+                }
+            case 1:
                 if regularExpression.isValidNickname(nickname: dbInputText[i]){
                     continue
                 }else{
@@ -117,7 +162,7 @@ class SignUpNicknameViewController: UIViewController {
                     tfInput[i].becomeFirstResponder()
                     return false
                 }
-            case 1:
+            case 2:
                 if regularExpression.isValidPhone(phone: dbInputText[i]){
                     continue
                 }else{
@@ -145,38 +190,54 @@ class SignUpNicknameViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // DB : insert user
-    func dbInsertUser() {
-        let model = SignUpModel()
-        let result = model.insertUser(email: email, password: password, nickname: dbInputText[0], phone: dbInputText[1], babyage: dbInputText[2])
+    // DB : update user
+    func dbUpdateUser(){
+        let password = dbInputText[0]
+        let nickname = dbInputText[1]
+        let phone = dbInputText[2]
+        let babyage = tfBabyage.text!
+        
+        let model = ModifyMyinfoModel()
+        let result = model.updateMyinfo(email: email, password: password, nickname: nickname, phone: phone, babyage: babyage)
         
         if result {
-            Share.userEmail = email
-            Share.userNickName = dbInputText[0]
-            let resultAlert = UIAlertController(title: "가입 완료", message: "가입을 축하드립니다...", preferredStyle: .alert)
-            let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in
-                self.performSegue(withIdentifier: "sgSignUpSuccess", sender: self)
-            })
+            Share.userNickName = nickname
+            let resultAlert = UIAlertController(title: "내 정보 수정 완료", message: nil, preferredStyle: .alert)
+            let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in self.viewWillAppear(true)})
             resultAlert.addAction(onAction)
             present(resultAlert, animated: true, completion: nil)
         }else{
             let resultAlert = UIAlertController(title: "실패", message: "에러가 발생했습니다.", preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
+
             resultAlert.addAction(onAction)
             present(resultAlert, animated: true, completion: nil)
         }
     }
 
-} // SignUpNicknameViewController
+    
+}// MyInfoLocalUserViewController
 
-extension SignUpNicknameViewController: SignUpDuplicateCheckProtocol{
+extension MyInfoLocalUserViewController: SignUpDuplicateCheckProtocol{
     func duplicateCheck(result: String) {
         if result == "0"{
-            dbInsertUser()
+            dbUpdateUser()
         }else{
             setBlankInLabel()
             lblNickname.text = "이미 사용중인 닉네임 입니다."
         }
+    }
+}
+
+// select user
+extension MyInfoLocalUserViewController: SelectMyInfoProtocol{
+    func selectMyInfo(userData: NSMutableArray) {
+        
+        let user: UserDBModel = userData[0] as! UserDBModel
+        
+        tfPassword.text = user.password!
+        tfNickname.text = user.nickname!
+        tfPhone.text = user.phone!
+        tfBabyage.text = user.babyage!
     }
 }

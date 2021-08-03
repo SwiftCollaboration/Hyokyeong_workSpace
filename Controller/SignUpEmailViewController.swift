@@ -141,7 +141,6 @@ class SignUpEmailViewController: UIViewController {
     }
     
 }
-
 extension SignUpEmailViewController: SignUpDuplicateCheckProtocol{
     func duplicateCheck(result: String) {
         if result == "0"{
