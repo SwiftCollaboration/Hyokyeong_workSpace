@@ -142,7 +142,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호(8자리 이상, 숫자 문자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0x-ha-oWB" customClass="HoshiTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0x-ha-oWB" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="40" y="208" width="290" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -167,6 +167,9 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnLogin:" destination="zvd-Nt-yQt" eventType="touchUpInside" id="yWx-Hb-cax"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8n-A7-yQv">
                                 <rect key="frame" x="40" y="268" width="334" height="21"/>
@@ -180,6 +183,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="MainColor"/>
                                 <state key="normal" image="eye.slash.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="btnPasswordAction:" destination="zvd-Nt-yQt" eventType="touchUpInside" id="fVH-Fd-JSx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tv-Wn-UQh">
                                 <rect key="frame" x="40" y="381" width="334" height="52"/>
@@ -200,6 +206,9 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnFindPassword:" destination="zvd-Nt-yQt" eventType="touchUpInside" id="2dJ-Ap-2PC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jsQ-te-JBt"/>
@@ -209,6 +218,10 @@
                         <barButtonItem key="backBarButtonItem" title="back" id="Kdy-5L-3ZV"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnShowPassword" destination="J3v-b7-I0W" id="bIY-p5-QcM"/>
+                        <outlet property="lblNotice" destination="r8n-A7-yQv" id="iAj-f1-vk0"/>
+                        <outlet property="tfEmail" destination="x19-3l-o2B" id="yoY-uK-wYq"/>
+                        <outlet property="tfPassword" destination="A0x-ha-oWB" id="Odw-po-y9c"/>
                         <segue destination="8O8-Af-rFY" kind="show" identifier="sgLoginSuccess" id="954-Qz-QP9"/>
                     </connections>
                 </viewController>
@@ -424,7 +437,7 @@
     </scenes>
     <designables>
         <designable name="A0x-ha-oWB">
-            <size key="intrinsicContentSize" width="261" height="32"/>
+            <size key="intrinsicContentSize" width="77.5" height="32"/>
         </designable>
         <designable name="FVv-10-kYK">
             <size key="intrinsicContentSize" width="121.5" height="33.5"/>
@@ -446,7 +459,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="57u-3B-rWE"/>
+        <segue reference="954-Qz-QP9"/>
         <segue reference="B4j-X1-sxv"/>
     </inferredMetricsTieBreakers>
     <resources>

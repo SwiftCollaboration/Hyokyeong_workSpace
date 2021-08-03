@@ -62,9 +62,9 @@ class SignUpEmailViewController: UIViewController {
     @IBAction func btnNext(_ sender: UIButton) {
         if checkEmptyText(){ // 1. 빈 값 체크
             if checkRegularExpression(){ // 2. 정규식 확인
-                let duplicateCheckModel = SignUpDuplicateCheckModel()
-                duplicateCheckModel.isVaildItem(item: "email", content: dbInputText[0])
-                duplicateCheckModel.delegate = self // 3. email 중복 확인
+                let model = SignUpDuplicateCheckModel()
+                model.isVaildItem(item: "email", content: dbInputText[0])
+                model.delegate = self // 3. email 중복 확인
             }
         }
     }
