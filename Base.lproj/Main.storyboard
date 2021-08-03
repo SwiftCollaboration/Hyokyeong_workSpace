@@ -446,7 +446,7 @@
         <!--내 정보-->
         <scene sceneID="xrE-tK-LM4">
             <objects>
-                <viewController id="Zcf-Ul-C3Z" customClass="MyInfoLocalUserViewController" customModule="BebeLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zcf-Ul-C3Z" customClass="ModifyMyinfoViewController" customModule="BebeLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5VM-9p-3Wc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

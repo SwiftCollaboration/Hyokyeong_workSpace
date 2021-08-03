@@ -8,7 +8,7 @@
 import UIKit
 import TextFieldEffects
 
-class MyInfoLocalUserViewController: UIViewController {
+class ModifyMyinfoViewController: UIViewController {
 
     let email = Share.userEmail
     
@@ -201,6 +201,7 @@ class MyInfoLocalUserViewController: UIViewController {
         let result = model.updateMyinfo(email: email, password: password, nickname: nickname, phone: phone, babyage: babyage)
         
         if result {
+            UserDefaults.standard.set(nickname, forKey: "nickname")
             Share.userNickName = nickname
             let resultAlert = UIAlertController(title: "내 정보 수정 완료", message: nil, preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .default, handler: {ACTION in self.viewWillAppear(true)})
@@ -216,9 +217,9 @@ class MyInfoLocalUserViewController: UIViewController {
     }
 
     
-}// MyInfoLocalUserViewController
+}// ModifyMyinfoViewController
 
-extension MyInfoLocalUserViewController: SignUpDuplicateCheckProtocol{
+extension ModifyMyinfoViewController: SignUpDuplicateCheckProtocol{
     func duplicateCheck(result: String) {
         if result == "0"{
             dbUpdateUser()
@@ -230,7 +231,7 @@ extension MyInfoLocalUserViewController: SignUpDuplicateCheckProtocol{
 }
 
 // select user
-extension MyInfoLocalUserViewController: SelectMyInfoProtocol{
+extension ModifyMyinfoViewController: SelectMyInfoProtocol{
     func selectMyInfo(userData: NSMutableArray) {
         
         let user: UserDBModel = userData[0] as! UserDBModel
@@ -239,5 +240,10 @@ extension MyInfoLocalUserViewController: SelectMyInfoProtocol{
         tfNickname.text = user.nickname!
         tfPhone.text = user.phone!
         tfBabyage.text = user.babyage!
+        
+        if user.password! == "kakao" || user.password! == "naver" || user.password! == "google" {
+            tfPassword.isEnabled = false
+            btnShowPassword.isHidden = true
+        }
     }
 }

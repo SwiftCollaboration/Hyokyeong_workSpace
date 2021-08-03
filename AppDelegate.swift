@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        KakaoSDKCommon.initSDK(appKey: "e70a1d7d9e16fe0fd159f47c596efae8")
+        KakaoSDKCommon.initSDK(appKey: "<#appKey#>")
         
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
         // 네이버 앱으로 인증하는 방식을 활성화

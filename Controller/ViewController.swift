@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     var apiPassword = ""
     
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
-    let signInConfig = GIDConfiguration.init(clientID: "<#GoogleClientID#>")
+    let signInConfig = GIDConfiguration.init(clientID: "<#googleClientID#>")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +118,17 @@ class ViewController: UIViewController {
     
     // API login 가입 여부 체크
     func emailDuplicateCheck(email:String, password:String){
-        let duplicateCheckModel = SignUpDuplicateCheckModel()
+        let model = SignUpDuplicateCheckModel()
         apiEmail = email
         apiPassword = password
-        duplicateCheckModel.isVaildItem(item: "email", content: email)
-        duplicateCheckModel.delegate = self
+        model.isVaildItem(item: "email", content: email)
+        model.delegate = self
+    }
+    
+    func socialLogin(){
+        let model = LoginModel()
+        model.loginResult(email: apiEmail, password: apiPassword)
+        model.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -137,11 +143,22 @@ class ViewController: UIViewController {
 } // ViewController
 
 // email 중복체크
-extension ViewController: SignUpDuplicateCheckProtocol{
+extension ViewController: SignUpDuplicateCheckProtocol, LoginModelProtocol{
     func duplicateCheck(result: String) {
         if result == "0"{
             self.performSegue(withIdentifier: "sgSosialSignUp", sender: self)
         }else{
+            socialLogin()
+        }
+    }
+    
+    func resultOfLogin(nickname: String) {
+        //print(nickname)
+        if nickname == "loginFail" || nickname == "loginError" {
+            print("social login error")
+        }else{
+            Share.userEmail = apiEmail
+            Share.userNickName = nickname
             self.performSegue(withIdentifier: "sgSocialLogin", sender: self)
         }
     }
